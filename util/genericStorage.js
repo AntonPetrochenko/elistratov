@@ -1,34 +1,36 @@
 const fs = require('fs')
 
-function init(storageName) {
-  const tf = `./${storageName}.json`
-  let storage = []
+function make(storageName) {
+  let tf = `./${storageName}.json`
+  let storage = {}
   if (fs.existsSync(tf)) {
     storage = JSON.parse(fs.readFileSync(tf).toString())
   }
   
-  function write(key, value) {
-      storage[key] = value
-      fs.writeFileSync(tf, JSON.stringify(storage))
-  }
+  // function write(key, value) {
+  //     storage[key] = value
+  //     fs.writeFileSync(tf, JSON.stringify(storage))
+  // }
   
-  function writeBatch(objChanges) {
+  function write(objChanges) {
     for (let changeIdx in objChanges) {
       storage[changeIdx] = objChanges[changeIdx]
     }
     fs.writeFileSync(tf, JSON.stringify(storage))
+
+    console.log(JSON.stringify(storage))
   }
   
-  function read() {
+  function get() {
     return storage
   }  
 
   return {
-    read, write, writeBatch
+    get, write
   }
 }
 
 
 module.exports = {
-  init
+  make
 }

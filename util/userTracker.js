@@ -8,8 +8,6 @@ if (fs.existsSync('./targets.json')) {
 	targets = JSON.parse(fs.readFileSync(tf).toString())
 }
 
-
-
 //Андрей, хочу быть пидором
 
 function rememberUser(userdata) {
@@ -89,10 +87,6 @@ module.exports = {
 
 				if (msg.text.includes('Андрей, где я?')) {
 					telegram.sendMessage(msg.chat.id, `Твои астральные координаты: ${msg.chat.id}`)
-				}
-
-				if (msg.text.includes('тест архива')) {
-					forgetUser(msg.from)
 				}
 			}
 		})
