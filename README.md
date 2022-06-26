@@ -35,7 +35,7 @@ module.exports = game
 //Данные пользователей
 const userTracker = require('../util/userTracker')
 let userData = userTracker.referenceUser(telegramSender)
-userTracker.kvUser(user, key, value)
+userTracker.kvUser(telegramSender, key, value)
 
 //Данные игр
 const storage = require('../util/genericStorage').make('storage-name')
